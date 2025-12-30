@@ -2,7 +2,10 @@ package dev.ct.crypto;
 
 import dev.ct.crypto.utils.crypto.encryption.Encrypt;
 import dev.ct.crypto.utils.crypto.decryption.Decrypt;
+import dev.ct.crypto.utils.crypto.exception.CryptoException;
 import dev.ct.crypto.utils.file.FileManager;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +23,10 @@ public class Main {
             String decryptedContent = Decrypt.decrypt(encryptedContent, key);
             System.out.printf("Decrypted content: %s\n", decryptedContent);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CryptoException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
